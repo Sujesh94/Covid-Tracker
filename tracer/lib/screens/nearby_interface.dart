@@ -44,9 +44,11 @@ class _NearbyInterfaceState extends State<NearbyInterface> {
             ? doc.data['contact location']
             : null;
         if (!contactTraces.contains(currUsername)) {
+          int count=0;
           contactTraces.add(currUsername);
           contactTimes.add(currTime);
           contactLocations.add(currLocation);
+          print(contactLocations[count]);
         }
       }
       //setState(() {});
@@ -192,7 +194,9 @@ class _NearbyInterfaceState extends State<NearbyInterface> {
                     contactUsername: contactTraces[index],
                     contactTime: contactTimes[index],
                     contactLocation: contactLocations[index],
+
                   );
+
                 },
                 itemCount: contactTraces.length,
               ),

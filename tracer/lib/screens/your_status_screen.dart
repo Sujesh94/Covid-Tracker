@@ -4,8 +4,9 @@ import 'package:contacttracingprototype/components/social_tips.dart';
 import 'package:contacttracingprototype/utilities/constants.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoder/geocoder.dart';
-class YourStatusListView extends StatefulWidget {
+import 'package:contacttracingprototype/components/modal_bottomsheet_style.dart';
 
+class YourStatusListView extends StatefulWidget {
   @override
   _YourStatusListViewState createState() => _YourStatusListViewState();
 }
@@ -15,24 +16,27 @@ class _YourStatusListViewState extends State<YourStatusListView> {
   void initState() {
     // TODO: implement initState
     super.initState();
-  getCurrentLocation();
+    getCurrentLocation();
   }
+
   double lattitude;
   double longittude;
-  String _currentAddress='Current location';
+  String _currentAddress = 'Current location';
 
-  Future getCurrentLocation() async{
+  Future getCurrentLocation() async {
     try {
-      Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-      lattitude=position.latitude;
-      longittude=position.longitude;
-      final coordinates = new Coordinates(lattitude,longittude);
-      var addresses = await Geocoder.local.findAddressesFromCoordinates(coordinates);
+      Position position = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.high);
+      lattitude = position.latitude;
+      longittude = position.longitude;
+      final coordinates = new Coordinates(lattitude, longittude);
+      var addresses =
+          await Geocoder.local.findAddressesFromCoordinates(coordinates);
       var first = addresses.first;
       setState(() {
-        _currentAddress=first.featureName.toString();
+        _currentAddress = first.featureName.toString();
       });
-    }catch(exception){
+    } catch (exception) {
       print(exception);
     }
   }
@@ -59,8 +63,12 @@ class _YourStatusListViewState extends State<YourStatusListView> {
                             //   '👩🏻‍',
                             //   style: TextStyle(fontSize: 30.0),
                             // ),
-                            child: Image.asset('images/location.jpg',width: 50,height: 50,),
+                            child: Image.asset(
+                              'images/location.jpg',
+                              width: 50,
+                              height: 50,
                             ),
+                          ),
                           decoration: kInnerDecoration,
                         ),
                       ),
@@ -74,7 +82,7 @@ class _YourStatusListViewState extends State<YourStatusListView> {
                   flex: 5,
                   child: Container(
                     child: Text(
-                     'You are at \n $_currentAddress',
+                      'You are at \n $_currentAddress',
                       style: TextStyle(
                           fontSize: 20.0,
                           color: Colors.white,
@@ -113,8 +121,7 @@ class _YourStatusListViewState extends State<YourStatusListView> {
         ),
         Padding(
           padding: const EdgeInsets.only(left: 40.0),
-          child: Text('How to maintain social distance:',
-              style: kHeadingStyle),
+          child: Text('How to maintain social distance:', style: kHeadingStyle),
         ),
         SizedBox(
           height: 10.0,
@@ -148,44 +155,12 @@ class _YourStatusListViewState extends State<YourStatusListView> {
                   child: Image.asset(
                     'images/img7.jpg',
                   ),
-                  onPressed: (){
+                  onPressed: () {
                     showModalBottomSheet(
                       context: context,
                       isScrollControlled: true,
                       builder: (context) => SingleChildScrollView(
-                        child: Container(
-                          padding: EdgeInsets.only(
-                              bottom: MediaQuery.of(context).viewInsets.bottom),
-                          child: Container(
-                            color: Color(0xFF757575),
-                            child: Container( padding: EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                color: Color(0xFF4082FF),
-                                borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(20),
-                                  topRight: Radius.circular(20),
-                                ),
-                              ),
-                              height: 300,
-                              child: ListView(
-                                children: [
-                                  Center(child: Text('Do\'s',style:TextStyle(color: Colors.white,fontSize: 20) ,),),
-                                  Text('1) Maintain Hygiene',style:kBottomModalSheet,),
-                                  Text('2) Seek Medical Help if Symptoms Occur',style: kBottomModalSheet,),
-                                  Text('3) Disinfect Packages After Receiving Them',style: kBottomModalSheet,),
-                                  Text('4) Avoid Going Out',style: kBottomModalSheet,),
-                                  Text('5) Drink Plenty of Water',style: kBottomModalSheet,),
-                                  Center(child: Text('Don\'ts',style:TextStyle(color: Colors.white,fontSize: 20) ,),),
-                                  Text('1) Do Not Eat Outside Food',style:kBottomModalSheet,),
-                                  Text('2) Avoid Touching Your Face',style: kBottomModalSheet,),
-                                  Text('3) Don’t Allow Children to Play Outside',style: kBottomModalSheet,),
-                                  Text('4) Don’t Ignore Government-issued Advice',style: kBottomModalSheet,),
-                                  Text('5) Don’t Panic',style: kBottomModalSheet,),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
+                        child:  ModalBottomSheetStyle(),
                       ),
                     );
                   },
@@ -194,14 +169,35 @@ class _YourStatusListViewState extends State<YourStatusListView> {
                 SizedBox(
                   height: 20.0,
                 ),
-                Image.asset('images/img7.jpg'),
+                FlatButton(
+                  child: Image.asset('images/img7.jpg'),
+                  onPressed: () {
+                    showModalBottomSheet(
+                      context: context,
+                      isScrollControlled: true,
+                      builder: (context) => SingleChildScrollView(
+                        child:  ModalBottomSheetStyle(),
+                      ),
+                    );
+                  },
+                ),
                 Text('Learn more about COVID-19', style: kHeadingStyle),
                 SizedBox(
                   height: 20.0,
                 ),
-                Image.asset('images/img8.jpg'),
-                Text('Safe measeure against COVID-19',
-                    style: kHeadingStyle),
+                FlatButton(
+                  child: Image.asset('images/img8.jpg'),
+                  onPressed: () {
+                    showModalBottomSheet(
+                      context: context,
+                      isScrollControlled: true,
+                      builder: (context) => SingleChildScrollView(
+                        child: ModalBottomSheetStyle(),
+                      ),
+                    );
+                  },
+                ),
+                Text('Safe measeure against COVID-19', style: kHeadingStyle),
               ],
             ),
           ),

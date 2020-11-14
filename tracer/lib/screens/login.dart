@@ -69,10 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     });
                     try {
                       final user = await _auth.signInWithEmailAndPassword(
-                          email: email, password: password).then((value) async{
-                        SharedPreferences prefs=await SharedPreferences.getInstance();
-                        prefs.setString('email', email);
-                      });
+                          email: email, password: password);
                       if (user != null) {
                         Navigator.pushNamed(context, CommonScreen.id);
                       }

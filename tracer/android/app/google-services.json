@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "620145060076",
-    "firebase_url": "https://contact-tracing-158ef.firebaseio.com",
-    "project_id": "contact-tracing-158ef",
-    "storage_bucket": "contact-tracing-158ef.appspot.com"
+    "project_number": "971605898557",
+    "firebase_url": "https://covid-watch-c640b.firebaseio.com",
+    "project_id": "covid-watch-c640b",
+    "storage_bucket": "covid-watch-c640b.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:620145060076:android:069bd18ff2c3e19c591dc9",
+        "mobilesdk_app_id": "1:971605898557:android:0821250b53356bce198154",
         "android_client_info": {
           "package_name": "com.diganta.contacttracingprototype"
         }
       },
       "oauth_client": [
         {
-          "client_id": "620145060076-eenal9k2ehevsuf8jo4i1vnrhvakrcim.apps.googleusercontent.com",
+          "client_id": "971605898557-p6f599u8igg2hcodq403bbh5vgns6aoh.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC5NUHq00xK6bZWDIeVMKFSgzulEUqHk-A"
+          "current_key": "AIzaSyBVO6vigNp15c_0IyBQntuCt47cmLZ9sf8"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "620145060076-eenal9k2ehevsuf8jo4i1vnrhvakrcim.apps.googleusercontent.com",
+              "client_id": "971605898557-p6f599u8igg2hcodq403bbh5vgns6aoh.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

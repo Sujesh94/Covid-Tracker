@@ -29,23 +29,23 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('images/kerala1.jpg'),
+            image: AssetImage('images/splash1.jpg'),
             fit: BoxFit.cover,
           ),
         ),
-        child: Center(
-          child:
-        Text(
-            'Covid Watch',
-            style: TextStyle(
-                color: Color(
-                  0xFF4082FF,
-                ),
-                fontWeight: FontWeight.bold,
-                fontSize: 25),
-          ),
-          //Image.asset('images/logo.png',width: 100,height: 500,),
-        ),
+        // child: Center(
+        //   child:
+        // Text(
+        //     'Covid Watch',
+        //     style: TextStyle(
+        //         color: Color(
+        //           0xFF4082FF,
+        //         ),
+        //         fontWeight: FontWeight.bold,
+        //         fontSize: 25),
+        //   ),
+        //   //Image.asset('images/logo.png',width: 100,height: 500,),
+        // ),
       ),
     );
   }

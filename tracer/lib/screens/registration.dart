@@ -1,11 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:contacttracingprototype/components/rounded_button.dart';
+import 'package:contacttracingprototype/screens/welcome_screen.dart';
 import 'package:contacttracingprototype/utilities/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:contacttracingprototype/screens/home_page.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class RegistrationScreen extends StatefulWidget {
   static const String id = 'registration_screen';
@@ -91,7 +93,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         }).then((value) async{
                           SharedPreferences prefs=await SharedPreferences.getInstance();
                           prefs.setString('email', email);
-
                         });
                         Navigator.pushNamed(context, CommonScreen.id);
                       }
@@ -99,7 +100,44 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         showSpinner = false;
                       });
                     } catch (e) {
-                      print(e);
+                      if(userName==null || email==null || password==null){
+                        Alert(
+                          context: context,
+                          type: AlertType.warning,
+                          title: "Registration failed",
+                          desc: 'All fields are mandatory',
+                          buttons: [
+                            DialogButton(
+                              color: Colors.orange,
+                              child: Text(
+                                "Ok",
+                                style: TextStyle(color: Colors.white, fontSize: 20),
+                              ),
+                              onPressed: () => Navigator.pushNamed(context, WelcomeScreen.id),
+                              width: 120,
+                            )
+                          ],
+                        ).show();
+                      }else{
+                        Alert(
+                          context: context,
+                          type: AlertType.warning,
+                          title: "Registration failed",
+                          desc: 'Email already registered',
+                          buttons: [
+                            DialogButton(
+                              color: Colors.orange,
+                              child: Text(
+                                "Ok",
+                                style: TextStyle(color: Colors.white, fontSize: 20),
+                              ),
+                              onPressed: () => Navigator.pushNamed(context, WelcomeScreen.id),
+                              width: 120,
+                            )
+                          ],
+                        ).show();
+                      }
+
                     }
                   },
                 ),
